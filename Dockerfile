@@ -1,6 +1,6 @@
 FROM node:lts-alpine
 LABEL maintainer="whyour"
-ARG QL_URL=https://github.com/lhx11187/qinglong.git
+ARG QL_URL=https://github.com/whyour/qinglong.git
 ARG QL_BRANCH=master
 ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin \
     LANG=zh_CN.UTF-8 \
@@ -30,6 +30,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
     && touch ~/.bashrc \
     && mkdir /run/nginx \
     && git clone -b ${QL_BRANCH} ${QL_URL} ${QL_DIR} \
+    && git clone -b ${QL_BRANCH} https://github.com/lhx11187/qinglong-heroku /ql/config \
     && git config --global user.email "qinglong@@users.noreply.github.com" \
     && git config --global user.name "qinglong" \
     && git config --global pull.rebase true \
@@ -37,6 +38,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
     && cp -f .env.example .env \
     && chmod 777 ${QL_DIR}/shell/*.sh \
     && chmod 777 ${QL_DIR}/docker/*.sh \
+    && chmod 777 ${QL_DIR}/config/*.sh \
     && npm install -g pnpm \
     && pnpm install -g pm2 \
     && pnpm install -g ts-node typescript tslib \
@@ -46,5 +48,5 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
     && git clone -b ${QL_BRANCH} https://github.com/whyour/qinglong-static.git /static \
     && cp -rf /static/* ${QL_DIR} \
     && rm -rf /static
-ENTRYPOINT ["./docker/docker-entrypoint.sh"]
-CMD ["nohup ./docker/docker-entrypoint.sh &"]
+#ENTRYPOINT ["./docker/docker-entrypoint.sh"]
+CMD ["nohup ./config/docker-entrypoint.sh &"]
