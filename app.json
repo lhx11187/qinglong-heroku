@@ -1,0 +1,18 @@
+{
+    "name": "qinglong",
+    "description": "Deploy qinglong on Heroku.",
+    "keywords": ["qinglong"],
+    "env": {
+            "TZ": {
+              "description": "时区",
+              "value": "Asia/Shanghai"
+              },
+          "LANG": {
+            "description": "编码格式",
+            "value": "en_US.UTF-8"
+        },
+    },
+    "website": "https://ibcl.us/Heroku-V2Ray_20191014/",
+    "repository": "https://github.com/lhx11187/qinglong-heroku",
+    "stack": "container"
+}
