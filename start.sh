@@ -1,2 +1,2 @@
-sed 's/5700/$PORT/g' ./config/front.conf
+sed -i 's/5700/echo $PORT/g' ./config/front.conf
 ./config/docker-entrypoint.sh &
