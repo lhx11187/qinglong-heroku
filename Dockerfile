@@ -47,4 +47,4 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
     && cp -rf /static/* ${QL_DIR} \
     && rm -rf /static
 ENTRYPOINT ["./docker/docker-entrypoint.sh"]
-CMD ./docker/docker-entrypoint.sh
+CMD ["./docker/docker-entrypoint.sh"]
