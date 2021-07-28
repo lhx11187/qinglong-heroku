@@ -1,1 +1,1 @@
-nohup ./config/docker-entrypoint.sh &
+./config/docker-entrypoint.sh &
