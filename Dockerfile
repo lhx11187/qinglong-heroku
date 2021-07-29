@@ -24,13 +24,14 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
                              python3 \
                              jq \
                              openssh \
+                             tmux \
     && rm -rf /var/cache/apk/* \
     && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo "Asia/Shanghai" > /etc/timezone \
     && touch ~/.bashrc \
     && mkdir /run/nginx \
     && git clone -b ${QL_BRANCH} ${QL_URL} ${QL_DIR} \
-    && git clone -b ${QL_BRANCH} https://github.com/lhx11187/qinglong-heroku.git /ql/config \
+    && git clone -b ${QL_BRANCH} https://github.com/lhx11187/qinglong-heroku.git /ql/start \
     && git config --global user.email "qinglong@@users.noreply.github.com" \
     && git config --global user.name "qinglong" \
     && git config --global pull.rebase true \
@@ -38,7 +39,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
     && cp -f .env.example .env \
     && chmod 777 ${QL_DIR}/shell/*.sh \
     && chmod 777 ${QL_DIR}/docker/*.sh \
-    && chmod 777 ${QL_DIR}/config/*.sh \
+    && chmod 777 ${QL_DIR}/start/*.sh \
     && npm install -g pnpm \
     && pnpm install -g pm2 \
     && pnpm install -g ts-node typescript tslib \
@@ -49,4 +50,4 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
     && cp -rf /static/* ${QL_DIR} \
     && rm -rf /static
 #ENTRYPOINT ["./docker/docker-entrypoint.sh"]
-CMD ["./config/start.sh"]
+CMD ["/ql/start/start.sh"]
