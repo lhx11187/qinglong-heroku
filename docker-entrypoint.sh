@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+sed -i "s/5700/$PORT/g" /ql/start/front.conf
+
 dir_shell=/ql/shell
 . $dir_shell/share.sh
 link_shell
