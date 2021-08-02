@@ -49,6 +49,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
     && git clone -b ${QL_BRANCH} https://github.com/whyour/qinglong-static.git /static \
     && cp -rf /static/* ${QL_DIR} \
     && rm -rf /static
+ADD docker-entrypoint.sh /ql/start/docker-entrypoint.sh
 #ENTRYPOINT ["./docker/docker-entrypoint.sh"]
 #ENTRYPOINT ["sh", "-c", "./docker/docker-entrypoint.sh"]
-CMD ["/bin/sh","-c","/ql/start/start.sh"]
+CMD ["/ql/start/docker-entrypoint.sh"]
