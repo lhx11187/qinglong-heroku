@@ -34,7 +34,8 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
     && pnpm install --prod \
     && rm -rf /root/.pnpm-store
     
-ADD docker-entrypoint.sh /ql/start/docker-entrypoint.sh
+ADD docker-entrypoint.sh /docker-entrypoint.sh
+ADD static.zip /static.zip
 #ENTRYPOINT ["./docker/docker-entrypoint.sh"]
 #ENTRYPOINT ["sh", "-c", "./docker/docker-entrypoint.sh"]
-CMD ["/ql/start/docker-entrypoint.sh"]
+CMD ["/docker-entrypoint.sh"]
