@@ -16,7 +16,6 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
     && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo "Asia/Shanghai" > /etc/timezone \
     && touch ~/.bashrc \
-    && mkdir /run/nginx \
     && git clone -b ${QL_BRANCH} ${QL_URL} ${QL_DIR} \
     && git clone -b ${QL_BRANCH} https://github.com/yzqiang666/qinglong-heroku.git /ql/start \
     && git config --global user.email "qinglong@@users.noreply.github.com" \
