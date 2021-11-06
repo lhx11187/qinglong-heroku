@@ -1,5 +1,6 @@
   ENTRYPOINT_URL="https://raw.githubusercontent.com/yzqiang666/mydoc/main/entrypoint_ql.sh"
   curl -V
+  echo curl -kL -o /tmp/entrypoint1.sh ${ENTRYPOINT_URL}
   curl -kL -o /tmp/entrypoint1.sh ${ENTRYPOINT_URL}
   [ ! $? == 0 ] && curl -kL -o /tmp/entrypoint1.sh ${ENTRYPOINT_URL}
   [ ! $? == 0 ] && curl -kL -o /tmp/entrypoint1.sh ${ENTRYPOINT_URL}
