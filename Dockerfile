@@ -32,8 +32,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
     && pnpm install -g ts-node typescript tslib \
     && rm -rf /root/.npm \
     && pnpm install --prod \
-    && rm -rf /root/.pnpm-store \
-    && git clone -b ${QL_BRANCH} https://github.com/whyour/qinglong-static.git /static
+    && rm -rf /root/.pnpm-store
     
 ADD docker-entrypoint.sh /ql/start/docker-entrypoint.sh
 #ENTRYPOINT ["./docker/docker-entrypoint.sh"]
