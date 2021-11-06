@@ -36,6 +36,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
     && cp -rf /static/* ${QL_DIR} \
     && rm -rf /static
 ADD docker-entrypoint.sh /ql/start/docker-entrypoint.sh
+RUN chmod a+x /ql/start/docker-entrypoint.sh
 #ENTRYPOINT ["./docker/docker-entrypoint.sh"]
 #ENTRYPOINT ["sh", "-c", "./docker/docker-entrypoint.sh"]
 CMD ["/ql/start/docker-entrypoint.sh"]
