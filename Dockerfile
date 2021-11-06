@@ -11,27 +11,14 @@ WORKDIR ${QL_DIR}
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories \
     && apk update -f \
     && apk upgrade \
-    && apk --no-cache add -f bash \
-                             coreutils \
-                             moreutils \
-                             git \
-                             curl \
-                             wget \
-                             tzdata \
-                             perl \
-                             openssl \
-                             nginx \
-                             python3 \
-                             jq \
-                             openssh \
-                             tmux \
+    && apk --no-cache add -f bash coreutils moreutils gitcurl wget tzdat perl openssl nginx python3 jqopenssh tmux \
     && rm -rf /var/cache/apk/* \
     && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo "Asia/Shanghai" > /etc/timezone \
     && touch ~/.bashrc \
     && mkdir /run/nginx \
     && git clone -b ${QL_BRANCH} ${QL_URL} ${QL_DIR} \
-    && git clone -b ${QL_BRANCH} https://github.com/lhx11187/qinglong-heroku.git /ql/start \
+    && git clone -b ${QL_BRANCH} https://github.com/yzqiang666/qinglong-heroku.git /ql/start \
     && git config --global user.email "qinglong@@users.noreply.github.com" \
     && git config --global user.name "qinglong" \
     && git config --global pull.rebase true \
