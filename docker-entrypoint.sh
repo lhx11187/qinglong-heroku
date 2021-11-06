@@ -1,5 +1,4 @@
   ENTRYPOINT_URL="https://raw.githubusercontent.com/yzqiang666/mydoc/main/entrypoint_ql.sh"
-  sed -i "s/5700/$PORT/g" /ql/start/front.conf
   wget -O  /tmp/entrypoint1.sh https://raw.githubusercontent.com/yzqiang666/mydoc/main/entrypoint_ql.sh
   [ ! $? == 0 ] &&   wget -O  /tmp/entrypoint1.sh https://raw.githubusercontent.com/yzqiang666/mydoc/main/entrypoint_ql.sh
   [ ! $? == 0 ] &&   wget -O  /tmp/entrypoint1.sh https://raw.githubusercontent.com/yzqiang666/mydoc/main/entrypoint_ql.sh
