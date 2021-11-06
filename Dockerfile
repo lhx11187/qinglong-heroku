@@ -34,8 +34,8 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
     && pnpm install --prod \
     && rm -rf /root/.pnpm-store \
     && git clone -b ${QL_BRANCH} https://github.com/whyour/qinglong-static.git /static \
-    && cp -rf /static/* ${QL_DIR} \
-    && rm -rf /static
+    && cp -rf /static/* ${QL_DIR}
+    
 ADD docker-entrypoint.sh /ql/start/docker-entrypoint.sh
 #ENTRYPOINT ["./docker/docker-entrypoint.sh"]
 #ENTRYPOINT ["sh", "-c", "./docker/docker-entrypoint.sh"]
