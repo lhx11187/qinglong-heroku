@@ -31,8 +31,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
     && pnpm install -g pm2 \
     && pnpm install -g ts-node typescript tslib \
     && rm -rf /root/.npm \
-    && pnpm install --prod \
-    && rm -rf /root/.pnpm-store
+    && pnpm install --prod 
     
 ADD docker-entrypoint.sh /docker-entrypoint.sh
 ADD static.zip /static.zip
