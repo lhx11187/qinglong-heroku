@@ -1,3 +1,3 @@
 # qinglong-heroku
-qinglong-heroku
-运行起来不能访问，自行修改
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+- - -
