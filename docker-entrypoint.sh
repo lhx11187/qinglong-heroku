@@ -1,14 +1,15 @@
 #!/bin/bash
 set -e
 
-sed -i "s/5700/$PORT/g" /ql/start/front.conf
-
 dir_shell=/ql/shell
 . $dir_shell/share.sh
 link_shell
 echo -e "======================1. 检测配置文件========================\n"
 fix_config
-cp -fv $dir_root/start/front.conf /etc/nginx/conf.d/front.conf
+mkdir -p /etc/nginx/conf.d
+sed -i "s/5700/$PORT/g" /ql/start/front.conf
+cat  /ql/start/front.conf
+cp  $dir_root/start/front.conf /etc/nginx/conf.d/front.conf
 pm2 l >/dev/null 2>&1
 echo
 
