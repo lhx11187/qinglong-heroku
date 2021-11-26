@@ -11,27 +11,13 @@ WORKDIR ${QL_DIR}
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories \
     && apk update -f \
     && apk upgrade \
-    && apk --no-cache add -f bash \
-                             coreutils \
-                             moreutils \
-                             git \
-                             curl \
-                             wget \
-                             tzdata \
-                             perl \
-                             openssl \
-                             nginx \
-                             python3 \
-                             jq \
-                             openssh \
-                             tmux \
+    && apk --no-cache add -f bash coreutils moreutils git curl wget tzdata perl openssl nginx python3 jq openssh tmux \
     && rm -rf /var/cache/apk/* \
     && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo "Asia/Shanghai" > /etc/timezone \
     && touch ~/.bashrc \
-    && mkdir /run/nginx \
     && git clone -b ${QL_BRANCH} ${QL_URL} ${QL_DIR} \
-    && git clone -b ${QL_BRANCH} https://github.com/lhx11187/qinglong-heroku.git /ql/start \
+    && git clone -b ${QL_BRANCH} https://github.com/yzqiang666/qinglong-heroku.git /ql/start \
     && git config --global user.email "qinglong@@users.noreply.github.com" \
     && git config --global user.name "qinglong" \
     && git config --global pull.rebase true \
@@ -50,6 +36,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
     && cp -rf /static/* ${QL_DIR} \
     && rm -rf /static
 ADD docker-entrypoint.sh /ql/start/docker-entrypoint.sh
+RUN chmod a+x /ql/start/docker-entrypoint.sh
 #ENTRYPOINT ["./docker/docker-entrypoint.sh"]
 #ENTRYPOINT ["sh", "-c", "./docker/docker-entrypoint.sh"]
 CMD ["/ql/start/docker-entrypoint.sh"]
